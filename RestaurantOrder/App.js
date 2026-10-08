@@ -10,9 +10,9 @@ import MenuScreen from './src/screens/customer/MenuScreen';
 import BillSummaryScreen from './src/screens/customer/BillSummaryScreen';
 import KitchenQueueScreen from './src/screens/kitchen/KitchenQueueScreen';
 import ResetScreen from './src/screens/admin/ResetScreen';
-import BillHistoryScreen from './src/screens/History/BillHistoryScreen';
+import { registerRootComponent } from 'expo';
 
-const TABS = [['customer', 'ลูกค้า'], ['kitchen', 'ครัว'], ['history', 'ประวัติ'], ['admin', 'ตั้งค่า']];
+const TABS = [['customer', 'ลูกค้า'], ['kitchen', 'ครัว'], ['admin', 'ตั้งค่า']];
 
 function Root() {
   const { colors: COLORS } = useTheme();
@@ -22,11 +22,8 @@ function Root() {
 
   let body;
   if (tab === 'kitchen') body = <KitchenQueueScreen />;
-  else if (tab === 'admin') {
-    body = <ResetScreen />;
-  } else if (tab === 'history') {
-    body = <BillHistoryScreen />;
-  } else if (!bill) body = <TableSelectScreen onSelect={(b) => { setBill(b); setShowBill(false); }} />;
+  else if (tab === 'admin') body = <ResetScreen />;
+  else if (!bill) body = <TableSelectScreen onSelect={(b) => { setBill(b); setShowBill(false); }} />;
   else if (showBill) body = <BillSummaryScreen {...bill} onBack={() => setShowBill(false)} onClosed={() => { setBill(null); setShowBill(false); }} />;
   else body = <MenuScreen {...bill} onBill={() => setShowBill(true)} onBack={() => setBill(null)} />;
 
@@ -64,3 +61,4 @@ export default function App() {
     </ThemeProvider>
   );
 }
+registerRootComponent(App);
