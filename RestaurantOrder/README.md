@@ -5,6 +5,9 @@
 นายธีระลักษณ์ ศรีจุ้ยซ้าย 6721601265 \
 นายพัชรพล บุญเหลา 6721601401 
 
+# link youtube
+https://youtu.be/kT5uACf2FGU?si=P28kpI3SsDBgJNGP
+
 ## รัน
 npm install @react-navigation/native \
 npx expo install react-native-screens react-native-safe-area-context \
